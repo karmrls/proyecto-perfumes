@@ -228,8 +228,16 @@
             if (!target) return;
 
             e.preventDefault();
-            closeMenu();
-            smoothScroll.to(target.getBoundingClientRect().top + window.scrollY);
+            const y = target.getBoundingClientRect().top + window.scrollY;
+
+            // Desde el menú móvil: salto directo mientras el menú tapa la pantalla,
+            // así no se anima un scroll largo detrás del menú (causaba parpadeos)
+            if (root.classList.contains('menu-open')) {
+                window.scrollTo(0, clamp(y, 0, maxScroll()));
+                closeMenu();
+            } else {
+                smoothScroll.to(y);
+            }
 
             // Accesibilidad: mover el foco a la sección destino
             if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');

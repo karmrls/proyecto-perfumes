@@ -73,7 +73,7 @@ html.menu-open .nav-toggle-line:nth-of-type(2) { top: 24px; transform: rotate(45
 html.menu-open .nav-toggle-line:nth-of-type(3) { top: 24px; transform: rotate(-45deg); }
 
 /* Bloquea el scroll de la página mientras el menú móvil está abierto */
-html.menu-open body { overflow: hidden; }
+html.menu-open { overflow: hidden; }
 
 @media (max-width: 860px) {
     .nav { padding: 0 8px 0 24px; }
@@ -84,8 +84,9 @@ html.menu-open body { overflow: hidden; }
         position: fixed; inset: 0; z-index: 1;
         flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px;
         padding: 100px var(--gutter) 60px;
-        background: color-mix(in srgb, var(--bg) 96%, transparent);
-        backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+        /* Sin backdrop-filter: junto con el clip-path animado parpadea en negro en Android */
+        background: color-mix(in srgb, var(--bg) 97%, transparent);
+        will-change: clip-path;
         clip-path: circle(0% at calc(100% - 48px) 48px);
         visibility: hidden;
         transition: clip-path 0.8s var(--ease-in-out), visibility 0s linear 0.8s, background-color var(--aura-speed) ease;

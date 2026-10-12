@@ -6,6 +6,10 @@ html {
     -webkit-text-size-adjust: 100%;
     /* El desplazamiento suave lo controla main.js (scroll propio) */
     scroll-behavior: auto;
+    /* Móvil: evita el arrastre lateral y el rebote que deja ver el fondo al final */
+    overflow-x: hidden;
+    overflow-x: clip;
+    overscroll-behavior: none;
 }
 
 body {
@@ -15,7 +19,9 @@ body {
     font-weight: 300;
     line-height: 1.7;
     overflow-x: hidden;
+    overflow-x: clip;
     min-height: 100vh;
+    min-height: 100svh;
     transition: background-color var(--aura-speed) ease;
     -webkit-font-smoothing: antialiased;
 }
