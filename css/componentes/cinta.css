@@ -4,6 +4,7 @@
     position: relative; overflow: hidden; padding: 28px 0;
     border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
     transform: rotate(-2deg) scale(1.04);
+    background: rgba(0, 0, 0, 0.4);
     background: color-mix(in srgb, var(--bg) 40%, transparent);
     transition: background-color var(--aura-speed) ease;
 }

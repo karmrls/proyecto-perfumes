@@ -18,7 +18,10 @@
 
 .btn-solid { background: #fff; color: #120a10; }
 .btn-solid::before { background: var(--accent); }
-.btn-solid:hover { box-shadow: 0 12px 40px color-mix(in srgb, var(--glow-c) 55%, transparent); }
+.btn-solid:hover {
+    box-shadow: 0 12px 40px var(--glow-c);
+    box-shadow: 0 12px 40px color-mix(in srgb, var(--glow-c) 55%, transparent);
+}
 
 .btn-ghost { color: #fff; border-color: rgba(255, 255, 255, 0.3); }
 .btn-ghost::before { background: rgba(255, 255, 255, 0.12); }

@@ -14,6 +14,7 @@
 }
 .family::before {
     content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(90deg, var(--glow-a), transparent 85%);
     background: linear-gradient(90deg, color-mix(in srgb, var(--glow-a) 55%, transparent), transparent 85%);
     transform: scaleX(0); transform-origin: left;
     transition: transform 0.7s var(--ease-out), background-color var(--aura-speed) ease;

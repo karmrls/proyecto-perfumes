@@ -20,6 +20,7 @@
 .nav::before {
     content: ''; position: absolute; inset: 0; z-index: -1;
     border-radius: 40px;
+    background: rgba(0, 0, 0, 0.45);
     background: color-mix(in srgb, var(--bg) 45%, transparent);
     border: 1px solid var(--line);
     backdrop-filter: blur(20px) saturate(140%);
@@ -32,6 +33,7 @@
     position: relative; z-index: 2;
     font-family: var(--font-heading); font-size: 1.7rem; font-weight: 600;
     letter-spacing: 2px; color: #fff;
+    text-shadow: 0 0 18px var(--accent);
     text-shadow: 0 0 18px color-mix(in srgb, var(--accent) 60%, transparent);
 }
 
@@ -85,6 +87,7 @@ html.menu-open { overflow: hidden; }
         flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px;
         padding: 100px var(--gutter) 60px;
         /* Sin backdrop-filter: junto con el clip-path animado parpadea en negro en Android */
+        background: var(--bg);
         background: color-mix(in srgb, var(--bg) 97%, transparent);
         will-change: clip-path;
         clip-path: circle(0% at calc(100% - 48px) 48px);
