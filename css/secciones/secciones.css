@@ -1,0 +1,41 @@
+/* 
+   SECCIONES: ESTRUCTURA COMÚN
+   Espaciado, índice, título e introducción que comparten todas las secciones.
+    */
+
+.section {
+    position: relative;
+    min-height: 100vh; min-height: 100svh;
+    padding: calc(var(--nav-height) + 110px) 0 120px;
+    display: flex; flex-direction: column; justify-content: center;
+}
+
+.section-head { margin-bottom: clamp(40px, 6vw, 72px); max-width: 760px; }
+
+.section-index {
+    display: inline-flex; align-items: center; gap: 14px; margin-bottom: 22px;
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent);
+    transition: color var(--aura-speed) ease;
+}
+.section-index::before {
+    content: ''; width: 36px; height: 1px; background: currentColor;
+}
+
+.section-title {
+    font-family: var(--font-heading); font-weight: 400;
+    font-size: clamp(2.4rem, 5.5vw, 4.4rem); line-height: 1.08; letter-spacing: -0.5px;
+}
+.section-title em {
+    color: var(--accent);
+    transition: color var(--aura-speed) ease;
+}
+
+.section-intro {
+    margin-top: 24px; max-width: 560px;
+    font-size: 1.02rem; color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+    .section { padding: calc(var(--nav-height) + 80px) 0 90px; }
+}

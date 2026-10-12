@@ -1,0 +1,67 @@
+/* 
+   CATÁLOGO
+   Familias olfativas: adelanto mientras se diseñan las tarjetas de perfumes.
+    */
+
+.families { border-top: 1px solid var(--line); }
+
+.family {
+    position: relative; overflow: hidden; isolation: isolate;
+    display: grid; grid-template-columns: 70px 1fr auto 40px; align-items: center; gap: 24px;
+    padding: 30px 24px;
+    border-bottom: 1px solid var(--line);
+    cursor: default;
+}
+.family::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--glow-a) 55%, transparent), transparent 85%);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.7s var(--ease-out), background-color var(--aura-speed) ease;
+}
+.family:hover::before { transform: scaleX(1); }
+
+.family-num {
+    font-size: 0.8rem; letter-spacing: 2px; color: var(--text-secondary);
+    transition: color 0.4s ease;
+}
+.family-name {
+    font-family: var(--font-heading); font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.1;
+    transition: transform 0.6s var(--ease-out), color 0.4s ease;
+}
+.family-notes {
+    font-size: 0.85rem; letter-spacing: 1px; color: var(--text-secondary); text-align: right;
+    transition: color 0.4s ease, transform 0.6s var(--ease-out);
+}
+.family-arrow {
+    justify-self: end; color: var(--accent); font-size: 1.1rem;
+    opacity: 0; transform: rotate(-90deg) scale(0.5);
+    transition: opacity 0.4s ease, transform 0.6s var(--ease-out);
+}
+.family:hover .family-num { color: var(--accent); }
+.family:hover .family-name { transform: translateX(14px); font-style: italic; }
+.family:hover .family-notes { color: var(--text-primary); transform: translateX(-6px); }
+.family:hover .family-arrow { opacity: 1; transform: rotate(0) scale(1); }
+
+.coming-soon {
+    display: inline-flex; align-items: center; gap: 14px; margin-top: 48px;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--text-secondary);
+}
+.pulse {
+    position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+}
+.pulse::after {
+    content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--accent);
+    animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+    0%   { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3.5); opacity: 0; }
+}
+
+@media (max-width: 860px) {
+    .family { grid-template-columns: 44px 1fr; gap: 6px 16px; padding: 24px 8px; }
+    .family-notes { grid-column: 2; text-align: left; }
+    .family-arrow { display: none; }
+}

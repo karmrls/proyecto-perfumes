@@ -1,0 +1,56 @@
+/*ATMÓSFERALuces de fondo que cambian de color, grano y halo que sigue al cursor.*/
+
+.atmosphere {
+    position: fixed; inset: 0; z-index: -2;
+    pointer-events: none; overflow: hidden;
+}
+
+/* currentColor permite que el degradado haga transición de color */
+.glow {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(closest-side, currentColor, transparent);
+    opacity: 0.7;
+    transition: color var(--aura-speed) ease;
+    animation: glowDrift 24s ease-in-out infinite alternate;
+    will-change: transform;
+}
+.glow-a { color: var(--glow-a); width: 85vmax; height: 85vmax; top: -35vmax; left: -25vmax; }
+.glow-b { color: var(--glow-b); width: 95vmax; height: 95vmax; bottom: -45vmax; right: -35vmax; animation-duration: 30s; animation-delay: -6s; }
+.glow-c { color: var(--glow-c); width: 55vmax; height: 55vmax; top: 30%; left: 35%; opacity: 0.4; animation-duration: 20s; animation-delay: -12s; }
+
+@keyframes glowDrift {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(8%, 6%, 0) scale(1.1); }
+    100% { transform: translate3d(-6%, 10%, 0) scale(0.95); }
+}
+
+/* Grano fino tipo papel para dar textura */
+.grain {
+    position: absolute; inset: -50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+    animation: grainShift 1.2s steps(6) infinite;
+}
+
+@keyframes grainShift {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-3%, 2%); }
+    50%  { transform: translate(2%, -3%); }
+    75%  { transform: translate(-2%, -1%); }
+    100% { transform: translate(1%, 3%); }
+}
+
+/* Halo que sigue al cursor */
+.cursor-aura {
+    position: fixed; top: 0; left: 0; z-index: -1;
+    width: 520px; height: 520px; margin: -260px 0 0 -260px;
+    border-radius: 50%; pointer-events: none;
+    color: var(--accent);
+    background: radial-gradient(closest-side, currentColor, transparent);
+    opacity: 0; mix-blend-mode: soft-light;
+    transition: color var(--aura-speed) ease, opacity 0.6s ease, width 0.5s var(--ease-out), height 0.5s var(--ease-out), margin 0.5s var(--ease-out);
+    will-change: transform;
+}
+.cursor-aura.is-active { opacity: 0.55; }
+.cursor-aura.is-hovering { width: 720px; height: 720px; margin: -360px 0 0 -360px; opacity: 0.8; }

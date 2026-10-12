@@ -1,0 +1,56 @@
+/*SCROLL PROPIO Barra de scroll personalizada, barra de progreso e indicador lateral de secciones. */
+
+/* --- BARRA DE SCROLL PERSONALIZADA --- */
+html::-webkit-scrollbar { width: 10px; }
+html::-webkit-scrollbar-track { background: var(--bg); }
+html::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--glow-c), var(--glow-a));
+    border-radius: 10px;
+    border: 3px solid var(--bg);
+}
+html::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Firefox (sin ::-webkit-scrollbar) */
+@supports not selector(::-webkit-scrollbar) {
+    html { scrollbar-width: thin; scrollbar-color: var(--glow-c) var(--bg); }
+}
+
+/* --- PROGRESO DEL SCROLL --- */
+.scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 200; pointer-events: none; }
+.scroll-progress span {
+    display: block; height: 100%;
+    background: linear-gradient(90deg, var(--glow-c), var(--accent));
+    transform: scaleX(var(--progress, 0)); transform-origin: left;
+    box-shadow: 0 0 12px var(--glow-c);
+}
+
+/* --- INDICADOR LATERAL DE SECCIONES --- */
+.section-dots {
+    position: fixed; right: 28px; top: 50%; z-index: 90;
+    display: flex; flex-direction: column; gap: 14px;
+    transform: translateY(-50%);
+}
+.dot {
+    position: relative; display: block; width: 8px; height: 8px; border-radius: 8px;
+    background: rgba(255, 255, 255, 0.25);
+    transition: height 0.5s var(--ease-out), background-color 0.4s ease;
+}
+.dot::after {
+    content: ''; position: absolute; inset: -8px; /* área de clic más amplia */
+}
+.dot::before {
+    content: attr(data-label);
+    position: absolute; right: 22px; top: 50%;
+    white-space: nowrap; font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #fff; opacity: 0; pointer-events: none;
+    transform: translate(8px, -50%);
+    transition: opacity 0.3s ease, transform 0.4s var(--ease-out);
+}
+.dot:hover::before,
+.dot:focus-visible::before { opacity: 0.85; transform: translate(0, -50%); }
+.dot:hover { background: rgba(255, 255, 255, 0.6); }
+.dot.is-active { height: 28px; background: var(--accent); }
+
+@media (max-width: 1024px) {
+    .section-dots { display: none; }
+}

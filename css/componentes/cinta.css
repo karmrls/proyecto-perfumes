@@ -1,0 +1,31 @@
+/* CINTA DE NOTAS Texto en bucle entre Sobre nosotros y Catálogo. */
+
+.marquee {
+    position: relative; overflow: hidden; padding: 28px 0;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    transform: rotate(-2deg) scale(1.04);
+    background: color-mix(in srgb, var(--bg) 40%, transparent);
+    transition: background-color var(--aura-speed) ease;
+}
+.marquee-track {
+    display: flex; align-items: center; gap: 36px; width: max-content;
+    animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-track span {
+    font-family: var(--font-heading); font-style: italic;
+    font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.2; white-space: nowrap;
+}
+.marquee-track .outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.55);
+}
+.marquee-track .star {
+    font-style: normal; font-size: 1.4rem; color: var(--accent);
+    transition: color var(--aura-speed) ease;
+}
+
+/* -50% exacto + gap: el contenido está duplicado para un bucle continuo */
+@keyframes marquee {
+    to { transform: translateX(calc(-50% - 18px)); }
+}

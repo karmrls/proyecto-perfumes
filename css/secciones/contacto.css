@@ -1,0 +1,140 @@
+/* 
+   CONTACTO
+   Texto de contacto, formulario con etiquetas flotantes, redes sociales y WhatsApp.
+    */
+
+.contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 7vw, 110px); align-items: center;
+}
+
+.contact-reasons { margin-top: 32px; display: grid; gap: 12px; }
+.contact-reasons li {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 0.92rem; color: var(--text-secondary);
+}
+.contact-reasons li::before {
+    content: '✦'; font-size: 0.8rem; color: var(--accent);
+    transition: color var(--aura-speed) ease;
+}
+
+.contact-form {
+    display: grid; gap: 30px;
+    padding: clamp(28px, 4vw, 48px); border-radius: 28px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+/* Campos con etiqueta flotante */
+.field { position: relative; }
+.field input,
+.field textarea {
+    width: 100%; padding: 22px 0 10px;
+    background: transparent; border: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--text-primary); font-family: var(--font-body); font-size: 1rem; font-weight: 300;
+    resize: vertical; outline: none;
+}
+.field textarea { min-height: 110px; }
+.field label {
+    position: absolute; left: 0; top: 22px;
+    font-size: 0.95rem; color: var(--text-secondary); pointer-events: none;
+    transform-origin: left top;
+    transition: transform 0.4s var(--ease-out), color 0.3s ease;
+}
+/* Línea animada inferior */
+.field::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+    background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.6s var(--ease-out), background-color var(--aura-speed) ease;
+}
+.field textarea + label { top: 22px; }
+.field:has(textarea)::after { bottom: 6px; }
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+    transform: translateY(-22px) scale(0.78);
+    color: var(--accent);
+}
+.field:focus-within::after { transform: scaleX(1); }
+.field.is-invalid input,
+.field.is-invalid textarea { border-bottom-color: #ff8a9a; }
+
+.contact-form .btn { justify-self: start; }
+
+.form-status { min-height: 1.4em; font-size: 0.88rem; color: var(--accent); }
+
+/* --- REDES SOCIALES Y WHATSAPP --- */
+.contact-social {
+    display: flex; flex-wrap: wrap; align-items: flex-end; gap: 40px 56px;
+    margin-top: 40px; padding-top: 32px;
+    border-top: 1px solid var(--line);
+}
+.contact-label {
+    margin-bottom: 14px;
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.social-list { display: flex; gap: 12px; }
+.social-link {
+    position: relative; isolation: isolate;
+    display: grid; place-items: center;
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--text-primary);
+    transition: color 0.4s ease, border-color 0.4s ease, transform 0.4s var(--ease-out);
+}
+/* Relleno que crece desde el centro */
+.social-link::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+    background: var(--accent);
+    transform: scale(0);
+    transition: transform 0.45s var(--ease-out), background-color var(--aura-speed) ease;
+}
+/* Nombre de la red al pasar el cursor (debajo, para no tapar la etiqueta) */
+.social-link::after {
+    content: attr(data-label);
+    position: absolute; top: calc(100% + 10px); left: 50%;
+    padding: 4px 10px; border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap;
+    color: var(--text-primary); opacity: 0; pointer-events: none;
+    transform: translate(-50%, -6px);
+    transition: opacity 0.3s ease, transform 0.4s var(--ease-out);
+}
+.social-link svg {
+    width: 22px; height: 22px;
+    fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+}
+.social-link svg .icon-fill { fill: currentColor; stroke: none; }
+
+.social-link:hover,
+.social-link:focus-visible { color: #120a10; border-color: var(--accent); transform: translateY(-3px); }
+.social-link:hover::before,
+.social-link:focus-visible::before { transform: scale(1); }
+.social-link:hover::after,
+.social-link:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+
+.whatsapp-number {
+    position: relative; display: inline-block;
+    font-family: var(--font-heading); font-size: 1.6rem; line-height: 1.2; letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+.whatsapp-number::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px;
+    background: var(--accent);
+    transform: scaleX(0); transform-origin: right;
+    transition: transform 0.45s var(--ease-out), background-color var(--aura-speed) ease;
+}
+.whatsapp-number:hover { color: var(--accent); }
+.whatsapp-number:hover::after { transform: scaleX(1); transform-origin: left; }
+
+@media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; }
+}

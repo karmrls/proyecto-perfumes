@@ -1,0 +1,68 @@
+/*AURAS Paleta de color de cada sección y de cada familia olfativa (main.js cambia html[data-aura]).*/
+
+:root,
+html[data-aura="inicio"] {
+    --bg: #08030a;
+    --glow-a: #8b0037;
+    --glow-b: #4a154b;
+    --glow-c: #b6456b;
+    --accent: #f0b8cb;
+}
+html[data-aura="nosotros"] {
+    --bg: #0c0705;
+    --glow-a: #8a4a14;
+    --glow-b: #4a1d10;
+    --glow-c: #c7924a;
+    --accent: #f1d29b;
+}
+html[data-aura="catalogo"] {
+    --bg: #0b0409;
+    --glow-a: #a8325f;
+    --glow-b: #521440;
+    --glow-c: #e07fa0;
+    --accent: #f8c4d6;
+}
+html[data-aura="sucursales"] {
+    --bg: #05050f;
+    --glow-a: #3c2a8c;
+    --glow-b: #15265e;
+    --glow-c: #7d5ed1;
+    --accent: #cdbfff;
+}
+html[data-aura="contacto"] {
+    --bg: #030a09;
+    --glow-a: #0e5a4a;
+    --glow-b: #10334a;
+    --glow-c: #3e9c84;
+    --accent: #b7ecd9;
+}
+
+/* Familias olfativas (al pasar el cursor en el catálogo) */
+html[data-aura="floral"] {
+    --bg: #0d0409;
+    --glow-a: #c23b6f;
+    --glow-b: #6a1747;
+    --glow-c: #ff9cbc;
+    --accent: #ffd0df;
+}
+html[data-aura="oriental"] {
+    --bg: #0d0604;
+    --glow-a: #a8501a;
+    --glow-b: #5c1a12;
+    --glow-c: #e0a050;
+    --accent: #ffd9a0;
+}
+html[data-aura="amaderada"] {
+    --bg: #080705;
+    --glow-a: #5b4325;
+    --glow-b: #2c3a24;
+    --glow-c: #8f7a4c;
+    --accent: #e2d2ad;
+}
+html[data-aura="fresca"] {
+    --bg: #030809;
+    --glow-a: #1f7a78;
+    --glow-b: #1d4d3a;
+    --glow-c: #a8d65a;
+    --accent: #e5f7c4;
+}

@@ -1,0 +1,20 @@
+/*VARIABLES Fuentes, colores de texto, curvas de animación y medidas globales.*/
+:root {
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    --text-primary: #f7f1f4;
+    --text-secondary: rgba(247, 241, 244, 0.68);
+    --line: rgba(255, 255, 255, 0.12);
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --aura-speed: 1.4s;
+
+    --nav-height: 72px;
+    --gutter: clamp(20px, 5vw, 64px);
+}
+
+@media (max-width: 860px) {
+    :root { --nav-height: 64px; }
+}

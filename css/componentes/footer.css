@@ -1,0 +1,20 @@
+/*FOOTER Pie de página. */
+
+.site-footer { padding: 40px 0 48px; border-top: 1px solid var(--line); }
+.footer-inner {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px;
+    font-size: 0.82rem; color: var(--text-secondary);
+}
+.footer-inner .brand { font-size: 1.4rem; }
+.credit strong { color: var(--text-primary); font-weight: 500; }
+.back-top {
+    display: inline-flex; gap: 8px; letter-spacing: 1.5px; text-transform: uppercase; font-size: 0.72rem;
+    transition: color 0.3s ease;
+}
+.back-top:hover { color: #fff; }
+.back-top span { transition: transform 0.4s var(--ease-out); }
+.back-top:hover span { transform: translateY(-3px); }
+
+@media (max-width: 600px) {
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+}

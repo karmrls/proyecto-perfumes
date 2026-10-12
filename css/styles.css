@@ -1,0 +1,40 @@
+/* 
+   L´Aura — Haute Parfumerie
+   Hoja principal: solo importa los demás archivos, en orden.
+
+   ¿Qué archivo editar?
+   - Colores de cada sección / familia ..... base/auras.css
+   - Fuentes, medidas y velocidades ........ base/variables.css
+   - Navbar y menú móvil ................... componentes/navbar.css
+   - Barra de scroll, progreso, puntos ..... componentes/scroll.css
+   - Fondo animado y halo del cursor ....... componentes/atmosfera.css
+   - Una sección en particular ............. secciones/<sección>.css
+   - Animaciones de entrada ................ animaciones.css
+
+   Cada archivo incluye sus propias reglas responsive (@media)
+   al final.
+    */
+
+/* Base */
+@import url("base/variables.css");
+@import url("base/auras.css");
+@import url("base/reset.css");
+
+/* Componentes globales */
+@import url("componentes/atmosfera.css");
+@import url("componentes/scroll.css");
+@import url("componentes/navbar.css");
+@import url("componentes/botones.css");
+@import url("componentes/cinta.css");
+@import url("componentes/footer.css");
+
+/* Secciones (en el orden de la página) */
+@import url("secciones/secciones.css");
+@import url("secciones/inicio.css");
+@import url("secciones/nosotros.css");
+@import url("secciones/catalogo.css");
+@import url("secciones/sucursales.css");
+@import url("secciones/contacto.css");
+
+/* Siempre al final: sobrescribe los estados iniciales de las secciones */
+@import url("animaciones.css");

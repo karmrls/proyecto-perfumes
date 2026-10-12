@@ -1,0 +1,85 @@
+/* 
+   INICIO (HERO)
+   Título principal, botella dibujada, botones e indicador de "desliza".
+    */
+
+.hero { align-items: center; text-align: center; overflow: hidden; padding-bottom: 140px; }
+
+.hero-inner {
+    position: relative; z-index: 2; padding: 0 var(--gutter);
+    /* --p (0 → 1) lo actualiza main.js al hacer scroll: efecto parallax */
+    transform: translate3d(0, calc(var(--p, 0) * 22vh), 0);
+    opacity: calc(1 - var(--p, 0) * 1.3);
+}
+
+.eyebrow {
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 6px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 18px;
+    transition: color var(--aura-speed) ease;
+}
+
+.hero-title {
+    font-family: var(--font-heading); font-weight: 400;
+    font-size: clamp(4.5rem, 16vw, 12rem); line-height: 1; letter-spacing: 4px;
+    perspective: 1000px;
+    translate: calc(var(--mx, 0) * -14px) calc(var(--my, 0) * -10px);
+    transition: translate 0.6s var(--ease-out);
+}
+
+.hero-tagline {
+    margin-top: 20px;
+    font-family: var(--font-heading); font-style: italic;
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem); color: var(--text-secondary);
+}
+
+.hero-actions { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+
+/* Botella dibujada en línea */
+.hero-bottle {
+    position: absolute; top: 50%; left: 50%; z-index: 1;
+    width: clamp(240px, 32vw, 420px); height: auto;
+    margin: calc(clamp(240px, 32vw, 420px) * -0.8) 0 0 calc(clamp(240px, 32vw, 420px) * -0.5);
+    fill: none; stroke: var(--accent); stroke-width: 0.6; stroke-linecap: round;
+    opacity: 0.28;
+    translate: calc(var(--mx, 0) * 26px) calc(var(--my, 0) * 18px);
+    transform: translate3d(0, calc(var(--p, 0) * -12vh), 0) rotate(calc(var(--mx, 0) * 4deg));
+    transition: stroke var(--aura-speed) ease, translate 0.8s var(--ease-out);
+    pointer-events: none;
+}
+.hero-bottle path { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.js .hero-bottle path { stroke-dashoffset: 1; animation: drawLine 2.6s var(--ease-in-out) forwards; }
+.js .hero-bottle path:nth-child(2) { animation-delay: 0.3s; }
+.js .hero-bottle path:nth-child(3) { animation-delay: 0.5s; animation-duration: 3.2s; }
+.js .hero-bottle path:nth-child(4) { animation-delay: 1.4s; }
+.js .hero-bottle path:nth-child(5) { animation-delay: 1.8s; }
+
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+/* Indicador de "desliza" */
+.scroll-cue {
+    position: absolute; bottom: 36px; left: 50%; z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-secondary);
+    transform: translateX(-50%);
+    transition: color 0.3s ease;
+}
+.scroll-cue:hover { color: #fff; }
+.scroll-cue i {
+    position: relative; display: block; width: 1px; height: 56px; overflow: hidden;
+    background: rgba(255, 255, 255, 0.15);
+}
+.scroll-cue i::after {
+    content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 50%;
+    background: var(--accent);
+    animation: cueDrop 2s var(--ease-in-out) infinite;
+}
+
+@keyframes cueDrop {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
+}
+
+@media (max-width: 600px) {
+    .hero { padding-bottom: 90px; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+}

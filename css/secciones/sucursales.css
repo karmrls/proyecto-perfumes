@@ -1,0 +1,57 @@
+/* 
+   SUCURSALES
+   Lista de sucursales con brillo que sigue al cursor.
+    */
+
+.branch-list { display: grid; gap: 18px; }
+
+.branch {
+    position: relative; overflow: hidden; isolation: isolate;
+    display: grid; grid-template-columns: 70px 1.3fr 1fr auto; align-items: center; gap: 28px;
+    padding: 34px 36px; border-radius: 22px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--line);
+    transition: border-color 0.4s ease;
+}
+/* Brillo que sigue al cursor (--x / --y los pone main.js) */
+.branch::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: radial-gradient(420px circle at var(--x, 50%) var(--y, 50%), color-mix(in srgb, var(--glow-c) 35%, transparent), transparent 70%);
+    opacity: 0; transition: opacity 0.4s ease;
+}
+.branch:hover { border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.branch:hover::before { opacity: 1; }
+
+.branch-num {
+    font-family: var(--font-heading); font-style: italic; font-size: 1.1rem; color: var(--accent);
+    transition: color var(--aura-speed) ease;
+}
+.branch-name { font-family: var(--font-heading); font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; }
+.branch-address { margin-top: 4px; font-size: 0.9rem; color: var(--text-secondary); }
+.branch-hours { font-size: 0.88rem; color: var(--text-primary); }
+.branch-hours span {
+    display: block; margin-bottom: 2px;
+    font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary);
+}
+.branch-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 22px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+.branch-link span { transition: transform 0.4s var(--ease-out); }
+.branch-link:hover { background: #fff; color: #120a10; border-color: #fff; }
+.branch-link:hover span { transform: translate(3px, -3px); }
+
+@media (max-width: 1024px) {
+    .branch { grid-template-columns: 50px 1fr auto; }
+    .branch-hours { grid-column: 2; }
+    .branch-link { grid-column: 3; grid-row: 1 / span 2; }
+}
+
+@media (max-width: 600px) {
+    .branch { grid-template-columns: 1fr; gap: 14px; padding: 28px 24px; }
+    .branch-hours,
+    .branch-link { grid-column: auto; grid-row: auto; }
+    .branch-link { justify-self: start; }
+}
