@@ -121,6 +121,8 @@ Este proyecto fue desarrollado como la presencia digital de una perfumería de a
 
 ## 👤 Autor
 
-**Hiram Rosales Segovia** · [GitHub](https://github.com/karmrls)
+**Hiram Rosales Segovia**
+
+[GitHub](https://github.com/karmrls) | [LinkedIn](https://www.linkedin.com/in/hiram-rosales-bb7047436)
 
 Estudiante de Ingeniería en Inteligencia Artificial primer grado universitario 2026
